@@ -20,6 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Display header
     displayLicense.innerText = licenseString;
+    const dateStr = urlParams.get('date');
+    if (dateStr) {
+        const dateElement = document.createElement('p');
+        dateElement.style.marginTop = '0.75rem';
+        dateElement.style.fontSize = '1.05rem';
+        dateElement.style.color = 'var(--text-secondary)';
+        dateElement.textContent = `Effective Date: `;
+        const strong = document.createElement('strong');
+        strong.style.color = 'var(--text-primary)';
+        strong.style.fontFamily = 'var(--font-mono)';
+        strong.textContent = dateStr;
+        dateElement.appendChild(strong);
+        licenseHeader.appendChild(dateElement);
+    }
     licenseHeader.style.display = 'block';
 
     // Parse license

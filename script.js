@@ -102,7 +102,56 @@ const contradictions = [
     { codes: ['REV', 'IRR'], message: 'License cannot be both Revocable and Irrevocable.' }
 ];
 
+let fetchedDateStr = '';
+let fetchedFullDateTimeStr = '';
+
+async function fetchCurrentTime() {
+    try {
+        const response = await fetch('https://worldtimeapi.org/api/timezone/Etc/UTC');
+        if (!response.ok) throw new Error('API request failed');
+        const data = await response.json();
+        if (data && data.datetime) {
+            const dt = new Date(data.datetime);
+            const yyyy = dt.getUTCFullYear();
+            const mm = String(dt.getUTCMonth() + 1).padStart(2, '0');
+            const dd = String(dt.getUTCDate()).padStart(2, '0');
+            fetchedDateStr = `${yyyy}-${mm}-${dd}`;
+            
+            const hours = String(dt.getUTCHours()).padStart(2, '0');
+            const minutes = String(dt.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(dt.getUTCSeconds()).padStart(2, '0');
+            fetchedFullDateTimeStr = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:${seconds} UTC`;
+        }
+    } catch (e) {
+        try {
+            const response = await fetch('https://timeapi.io/api/Time/current/zone?timeZone=UTC');
+            if (!response.ok) throw new Error('API request failed');
+            const data = await response.json();
+            if (data && data.dateTime) {
+                const dt = new Date(data.dateTime);
+                const yyyy = dt.getUTCFullYear();
+                const mm = String(dt.getUTCMonth() + 1).padStart(2, '0');
+                const dd = String(dt.getUTCDate()).padStart(2, '0');
+                fetchedDateStr = `${yyyy}-${mm}-${dd}`;
+                
+                const hours = String(dt.getUTCHours()).padStart(2, '0');
+                const minutes = String(dt.getUTCMinutes()).padStart(2, '0');
+                const seconds = String(dt.getUTCSeconds()).padStart(2, '0');
+                fetchedFullDateTimeStr = `${yyyy}-${mm}-${dd} ${hours}:${minutes}:${seconds} UTC`;
+            }
+        } catch (err) {
+            const dt = new Date();
+            const yyyy = dt.getUTCFullYear();
+            const mm = String(dt.getUTCMonth() + 1).padStart(2, '0');
+            const dd = String(dt.getUTCDate()).padStart(2, '0');
+            fetchedDateStr = `${yyyy}-${mm}-${dd}`;
+            fetchedFullDateTimeStr = `${yyyy}-${mm}-${dd} UTC (Device Time Fallback)`;
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    fetchCurrentTime();
     renderGrid();
     setupListeners();
     updateLicense();
@@ -165,7 +214,8 @@ function setupListeners() {
 
     document.getElementById('viewBtn').addEventListener('click', () => {
         const text = document.getElementById('licenseOutput').innerText;
-        window.open(`license.html?l=${encodeURIComponent(text)}`, '_blank');
+        const dateQuery = fetchedDateStr ? `&date=${encodeURIComponent(fetchedDateStr)}` : '';
+        window.open(`license.html?l=${encodeURIComponent(text)}${dateQuery}`, '_blank');
     });
 
     const downloadBtn = document.getElementById('downloadBtn');
@@ -186,6 +236,7 @@ function setupListeners() {
             licenseText += `Project: ${projName}\n`;
             licenseText += `Copyright (c) ${projYear} ${projAuthor}\n`;
             if (projLink) licenseText += `URL: ${projLink}\n`;
+            licenseText += `Date: ${fetchedFullDateTimeStr || new Date().toISOString().split('T')[0] + ' UTC (Local)'}\n`;
             licenseText += `\n`;
             licenseText += `This work is provided under the terms of the ${licenseString} license.\n`;
             licenseText += `The following terms apply:\n\n`;
@@ -196,7 +247,8 @@ function setupListeners() {
             
             licenseText += `\n`;
             licenseText += `For full definitions of the ADAB modular license, visit:\n`;
-            licenseText += `https://arvdevable.github.io/ADAB/license.html?l=${encodeURIComponent(licenseString)}\n`;
+            const dateQuery = fetchedDateStr ? `&date=${encodeURIComponent(fetchedDateStr)}` : '';
+            licenseText += `https://arvdevable.github.io/ADAB/license.html?l=${encodeURIComponent(licenseString)}${dateQuery}\n`;
             licenseText += `========================================================================\n`;
 
             const blob = new Blob([licenseText], { type: 'text/plain' });
