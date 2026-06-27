@@ -155,8 +155,8 @@ function renderTerms(selectedCodes) {
     if (selectedCodes.includes('SO')) {
         terms.push({
             title: 'Source Required (SO)',
-            desc: 'Any distribution of the Work or derivative works thereof must be accompanied by, or provide a clear, public, and free path to download, the complete and corresponding machine-readable source code, original design assets, or project files.',
-            tldr: 'Source code or original source files must be made available to anyone who receives the work.'
+            desc: 'When SO applies, the Licensor or distributor must make available the complete corresponding source in its preferred editable form, together with any files reasonably necessary to modify or reproduce the distributed Work.',
+            tldr: 'Source files must be made available in their preferred editable form to anyone who receives the work.'
         });
     }
     
@@ -185,8 +185,8 @@ function renderTerms(selectedCodes) {
     } else {
         terms.push({
             title: 'Irrevocable (IRR)',
-            desc: 'The grants, permissions, and licenses extended under this agreement are strictly irrevocable. Once granted, the Licensor cannot terminate, revoke, or alter these permissions for any Licensee who complies with the terms of this license.',
-            tldr: 'This license is strictly irrevocable.'
+            desc: 'The grants, permissions, and licenses extended under this agreement are strictly irrevocable. Once granted, the Licensor cannot terminate, revoke, or alter these permissions for any Licensee who complies with the terms of this license. This does not restrict the Licensor from releasing future versions or editions of the Work under different licensing terms. Such changes do not affect copies previously distributed under this License.',
+            tldr: 'This license is strictly irrevocable and cannot be taken away if complied.'
         });
     }
     
@@ -247,8 +247,8 @@ function renderTerms(selectedCodes) {
                     <li class="term-item">
                         <div class="term-icon">/</div>
                         <div class="term-content">
-                            <span class="term-title">Source Code / Source Files</span>
-                            <span class="term-desc">Source Code or Source Files means the preferred form of the Work for making modifications, including but not limited to software source code, design files, documentation sources, and media asset files.</span>
+                            <span class="term-title">Source</span>
+                            <span class="term-desc">Source means the preferred form of the Work for making modifications.</span>
                         </div>
                     </li>
                 </ul>
