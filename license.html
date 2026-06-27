@@ -1,0 +1,171 @@
+<!-- license.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADAB-v1.0 License Viewer</title>
+    <meta name="description" content="View the terms of an ADAB-v1.0 license.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .license-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .license-string {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: inline-block;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+            word-break: break-all;
+        }
+        
+        .license-string::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-gradient);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            backdrop-filter: var(--blur-glass);
+            box-shadow: var(--shadow-glass);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .summary-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .term-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .term-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .term-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .term-icon {
+            color: var(--accent-secondary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-top: -2px;
+        }
+
+        .term-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .term-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .term-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .not-found {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-secondary);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="logo-text">ADAB<span class="version">by morphedstill</span></span>
+            </div>
+            <p class="subtitle">License Viewer</p>
+        </header>
+
+        <main>
+            <div class="license-header" id="licenseHeader" style="display: none;">
+                <p>Viewing terms for:</p>
+                <div class="license-string" id="displayLicense"></div>
+            </div>
+
+            <div class="summary-card">
+                <div id="contentArea">
+                    <div class="not-found">Loading license terms...</div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="index.html" class="back-link">← Create your own license</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>Created by <a href="https://github.com/arvdevable/ADAB" target="_blank">arvdevable</a> | <a href="about.html">About ADAB</a></p>
+        </footer>
+    </div>
+
+    <script src="license.js"></script>
+</body>
+</html>

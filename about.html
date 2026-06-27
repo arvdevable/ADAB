@@ -1,0 +1,183 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ADAB-v1.0</title>
+    <meta name="description" content="About the ADAB license and generator.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            backdrop-filter: var(--blur-glass);
+            box-shadow: var(--shadow-glass);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-card p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .about-card strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .about-card a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .about-card a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .quote {
+            border-left: 4px solid var(--accent-primary);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            background: rgba(66, 116, 217, 0.05);
+            padding: 1.5rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+        
+        .back-link-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Updates & Changelog Styles */
+        .about-card h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .about-card h3 {
+            font-size: 1.15rem;
+            color: var(--accent-primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-family: var(--font-mono);
+        }
+
+        .about-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-card li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .feat-credit {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+            margin-left: 0.5rem;
+        }
+
+        .feat-credit a {
+            color: var(--accent-primary);
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="logo-text">ADAB<span class="version">by morphedstill</span></span>
+            </div>
+            <p class="subtitle">About the License</p>
+        </header>
+
+        <main>
+            <div class="about-card">
+                <h2>About</h2>
+                <p>I made this license and generator for myself, because Creative Commons feels like it's not enough personally. I don't push people to think they have to use ADAB, but if they use this, you have my thanks.</p>
+                
+                <div class="quote">
+                    <p>The name <strong>ADAB</strong> came from the Indonesian word <em>adab</em>, which means <strong>"kehalusan dan kebaikan budi pekerti, kesopanan, atau akhlak"</strong>, or refinement and goodness of character, politeness, or morals.</p>
+                </div>
+                
+                <h2>Credits</h2>
+                <p>Font <b style="color: var(--accent-primary);">Stack Sans Text</b> by Koto Studio, provided by Google Fonts<br>
+                Font <b style="color: var(--accent-primary);">Courier Prime</b> by Alan Dague-Greene, provided by Google Fonts</p>
+                
+                <p>Issues and source code at: <a href="https://github.com/arvdevable/ADAB" target="_blank">https://github.com/arvdevable/ADAB</a></p>
+                    <p></p>
+                <h2>Updates</h2>
+
+                <h3>v1.0</h3>
+                <ul>
+                    <li>initial release <span class="feat-credit">by <a href="https://github.com/arvdevable" target="_blank">arvdevable</a></span></li>
+                </ul>
+            </div>
+
+            <!--
+                <li>initial release <span class="feat-credit">by <a href="https://github.com/arvdevable" target="_blank">arvdevable</a> - Issue <a href="" target="_blank">00000</a></span></li>
+            -->
+            
+            <div class="back-link-container">
+                <a href="index.html" class="back-link">← Back to Generator</a>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>Created by <a href="https://github.com/arvdevable/ADAB" target="_blank">arvdevable</a> | <a href="about.html">About ADAB</a></p>
+        </footer>
+    </div>
+</body>
+</html>
